@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="col-sm-12 section-featured">
     <div class="row">
-        <div class="container">
+        <div class="container-fluid">
             <div id="featured">
                 <div class="featured-left">
                     <!--Include Featured Slider-->

@@ -1,4 +1,15 @@
 <?php
+if (!(isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' ||
+   $_SERVER['HTTPS'] == 1) ||
+   isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+   $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'))
+{
+   $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+   header('HTTP/1.1 301 Moved Permanently');
+   header('Location: ' . $redirect);
+   exit();
+}
+
 /**
  * CodeIgniter
  *
@@ -25,6 +36,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
